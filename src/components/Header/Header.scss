@@ -1,0 +1,13 @@
+.header {
+  margin-top: 0;
+  padding: 12px;
+  background-color: plum;
+  display: flex;
+  justify-content: space-between;
+}
+
+.header__logo {
+  list-style: none;
+  margin: 0;
+  font-weight: bold;
+}
