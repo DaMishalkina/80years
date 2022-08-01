@@ -1,0 +1,9 @@
+@use "../../components/style/StyleVariables" as Variables;
+
+.login-container {
+  padding: 0 16px;
+
+  @media (min-width: Variables.$screen--lg) {
+    width: 50%;
+  }
+}

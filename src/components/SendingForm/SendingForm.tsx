@@ -7,70 +7,64 @@ import classNames from "classnames";
 import "src/components/SendingForm/SendingForm.scss";
 
 interface Props {
+    formData: {login: string, password: string};
+    onInput: (value: string, id: string) => void;
+    onSubmit:(item: LoginItem, event: FormEvent<HTMLFormElement>) => void;
+    onReset: (event: FormEvent<HTMLFormElement>) => void;
     loginLabel?: string;
     passwordLabel?: string;
-    defaultLoginValue?: string;
-    defaultPasswordValue?: string;
-    onSubmit:(item: LoginItem) => void;
     error?: string;
     linkToAnotherForm?: string;
     linkText?: string;
 }
 
 export const SendingForm = ({
-                                defaultLoginValue= "",
-                                defaultPasswordValue = "",
+
+                                formData,
+                                onInput,
                                 error = "",
                                 loginLabel = "",
                                 passwordLabel = "",
                                 linkToAnotherForm = "",
                                 linkText = "",
+                                onReset,
                                 onSubmit}: Props) => {
-    const [loginValue, setLoginValue] = useState(defaultLoginValue);
-    const [passwordValue, setPasswordValue] = useState(defaultPasswordValue);
     const [isError, setIsError] = useState(error);
-    const handleReset = (event: FormEvent<HTMLFormElement>) => {
-        event.preventDefault();
-        setLoginValue("");
-        setPasswordValue("")
-    };
     const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
-        if(loginValue.length > 0 && passwordValue?.length > 0){
+        if(formData.login.length > 0 && formData.password?.length > 0 && error?.length === 0){
             setIsError("");
-            const newDataItem: LoginItem = {
-               login: loginValue,
-               password: passwordValue
-            }
-            onSubmit(newDataItem);
-            handleReset(event);
+            const newDataItem: LoginItem = formData;
+            onSubmit(newDataItem, event);
         } else {
-            setIsError("Empty!");
+            setIsError("Fields are required");
         }
     };
     useEffect(() => {
-        setIsError(error)
+        setIsError(error);
     }, [error])
     return (
         <form
             className="form-container"
             onSubmit={(event) => handleSubmit(event)}
-            onReset={(event) => handleReset(event)}
+            onReset={(event) => {
+                onReset(event)
+            }}
         >
             <TextInput
                 label={loginLabel}
-                defaultValue={loginValue}
+                defaultValue={formData.login}
                 error={isError}
                 onChange={(value) => {
-                    setLoginValue(value)
+                    onInput(value, "login")
                     setIsError("")
                 }} />
             <TextInput
                 label={passwordLabel}
-                defaultValue={passwordValue}
+                defaultValue={formData.password}
                 error={isError}
                 onChange={(value) => {
-                    setPasswordValue(value)
+                    onInput(value, "password")
                     setIsError("")
                 }}
                 type="password" />

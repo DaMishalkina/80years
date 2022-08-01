@@ -3,16 +3,18 @@ import classNames from "classnames";
 import "src/components/TextInput/TextInput.scss";
 
 interface Props {
+    defaultValue: string;
+    onChange: (value: string) => void;
+    id?: string;
     type?: "email" | "password" | "text" | "search";
     label?: string;
     placeholder?: string;
-    defaultValue: string;
-    onChange: (value: string) => void;
     error?: string;
 }
 
 export const TextInput = ({
                               label, type = "text",
+                              id = "",
                               error = "",
                               defaultValue,
                               onChange,
@@ -25,6 +27,7 @@ export const TextInput = ({
         <label className="text-input-container">
             {label}
             <input
+                {...(id.length > 0 && {id: id})}
                 className={classNames(
                     "text-input-container__input",
                     error?.length > 0

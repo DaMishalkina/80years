@@ -1,7 +1,9 @@
+@use "../../components/style/StyleVariables" as Variables;
+
 .sign-up-container{
   padding: 0 16px;
 
-  @media (min-width: 1080px) {
+  @media (min-width: Variables.$screen--lg) {
     width: 50%;
   }
 }
