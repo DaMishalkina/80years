@@ -1,0 +1,9 @@
+.checkboxes-container {
+  display: grid;
+  width: 100%;
+  grid-template-columns: repeat(52, minmax(1px, 1fr));
+}
+.year-line {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+}

@@ -1,4 +1,4 @@
-import { ComponentType, FunctionComponent } from "react";
+import {ComponentType, FunctionComponent} from "react";
 
 export interface RouteItem {
     key: string;
@@ -10,4 +10,5 @@ export interface RouteItem {
     icon?: ComponentType;
     subRoutes?: Array<RouteItem>;
     appendDivider?: boolean;
+    type: "guest" | "private";
 }

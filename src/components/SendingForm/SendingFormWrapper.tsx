@@ -2,12 +2,14 @@ import React, {FormEvent, useState} from "react";
 import { auth } from "src/firebaseSetup";
 import {LoginItem} from "src/components/SendingForm/types";
 import { SendingForm } from "src/components/SendingForm/SendingForm";
+import { useHistory } from "react-router-dom";
 
 interface Props {
     type?: "login" | "signup";
 }
 
 export const SendingFormWrapper = ({type = "login"}: Props) => {
+    const history = useHistory();
     const [formData, setFormData] = useState({login: "", password: ""});
     const [errorMessage, setErrorMessage] = useState("");
     const handleInput = (value: string, id: string) => {
@@ -22,8 +24,9 @@ export const SendingFormWrapper = ({type = "login"}: Props) => {
             if(type === "login"){
                 await auth.signInWithEmailAndPassword(item.login, item.password)
                     .then((response) => {
-                        console.log(response)
+                        localStorage.setItem("user", JSON.stringify(response.user))
                         handleReset(event)
+                        history.push("/dashboard")
                     }).catch((error) => {
                         setErrorMessage(error.message)
                     })

@@ -2,6 +2,7 @@ import {RouteItem} from "src/components/Naviagation/types/types";
 import {Home} from "src/pages/Home";
 import {Login} from "src/pages/Login";
 import {Signup} from "src/pages/Signup";
+import {UserAccount} from "src/pages/UserAccount";
 
 export const ROUTES: Array<RouteItem> = [
     {
@@ -11,7 +12,8 @@ export const ROUTES: Array<RouteItem> = [
         path: "/login",
         enabled: true,
         component: Login,
-        appendDivider: true
+        appendDivider: true,
+        type: "guest"
     },
     {
         key: "router-signup",
@@ -20,7 +22,18 @@ export const ROUTES: Array<RouteItem> = [
         path: "/signup",
         enabled: true,
         component: Signup,
-        appendDivider: true
+        appendDivider: true,
+        type: "guest"
+    },
+    {
+        key: "router-dashboard",
+        title: "UserAccount",
+        tooltip: "UserAccount",
+        path: "/dashboard",
+        enabled: true,
+        component: UserAccount,
+        appendDivider: true,
+        type: "private"
     },
     {
         key: "router-home",
@@ -29,6 +42,7 @@ export const ROUTES: Array<RouteItem> = [
         path: "/",
         enabled: true,
         component: Home,
-        appendDivider: true
+        appendDivider: true,
+        type: "guest"
     }
 ]

@@ -1,18 +1,34 @@
-import React from "react";
-import {NavLink, NavLink as Link} from "react-router-dom";
-import classNames from "classnames";
+import React, {useEffect, useState} from "react";
+import {NavLink} from "react-router-dom";
+import {auth} from "src/firebaseSetup";
+import { useHistory } from "react-router-dom";
 import "src/components/Header/Header.scss";
 
 interface Props {
     text?: string;
 }
 
-export const Header = ({ text }: Props) => {
+export const Header = ({}: Props) => {
+    const [isAuth, setIsAuth] = useState(false);
+    const history = useHistory();
+    const logout = async () => {
+        await auth.signOut();
+        localStorage.removeItem("user");
+        history.push("/");
+
+    }
+    useEffect(() => {
+        setIsAuth(!!localStorage.getItem("user"))
+    }, [localStorage.getItem("user")])
     return (
         <header className="header">
             <p className="header__logo">80 years</p>
             <div>
-                <NavLink to={"/login"}>Log in</NavLink>
+                {!isAuth ?
+                    <NavLink to={"/login"}>Log in</NavLink>
+                    :
+                    <button onClick={logout}>Log out</button>
+                }
             </div>
         </header>
     )
