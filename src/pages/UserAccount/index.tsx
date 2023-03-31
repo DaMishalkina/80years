@@ -1,7 +1,8 @@
 import React, {FunctionComponent, useEffect, useState} from "react";
-import {Layout} from "src/components/Layout/Layout";
+import {Layout} from "../../components/Layout/Layout";
 import {useHistory} from "react-router-dom";
 import {CustomCheckbox} from "src/pages/UserAccount/component/Checkbox/CustomCheckbox";
+import {OneYearWeeks} from "src/pages/UserAccount/component/OneYearWeeks/OneYearWeeks";
 import "src/pages/UserAccount/UserAccount.scss";
 
 const BIRTH_DATE = "07.08.1996";
@@ -20,7 +21,7 @@ const getColoredCheckbox = (birthDate: string) => {
 const coloredNumber = getColoredCheckbox(BIRTH_DATE);
 const weeksArray = Array.from(Array(ALL_WEEKS).keys());
 
-const divideArrayIntoChunks = (array: Array<number>, chunkSize:number) => {
+export const divideArrayIntoChunks = (array: Array<number>, chunkSize:number) => {
     const chunks = [];
     const items = array;
     while (items.length) {
@@ -32,6 +33,17 @@ const divideArrayIntoChunks = (array: Array<number>, chunkSize:number) => {
     return chunks
 }
 
+const produceArrayOfWeeks = (array: Array<number>) => {
+    const arrayToDevelop = JSON.parse(JSON.stringify(array));
+    console.log(arrayToDevelop)
+    return arrayToDevelop.map(value => {
+        return {
+            checked: value + 1 <= coloredNumber
+        }
+    })
+}
+
+
 export const UserAccount:FunctionComponent = ({}) => {
     const history = useHistory();
     const [isAuth, setIsAuth] = useState(false);
@@ -39,23 +51,26 @@ export const UserAccount:FunctionComponent = ({}) => {
     const handleCheck = () => {
         setIsActive(!isActive)
     }
-    useEffect(() => {
-        const isUserLogged = !!localStorage.getItem("user");
-        isUserLogged ? setIsAuth(isUserLogged) : history.push("/");
-    }, [localStorage.getItem("user")])
+
+    // useEffect(() => {
+    //     const isUserLogged = !!localStorage.getItem("user");
+    //     isUserLogged ? setIsAuth(isUserLogged) : history.push("/");
+    // }, [localStorage.getItem("user")])
     return (
         <>
             <Layout>
                 <div>User Account!</div>
-                <div className="year-line">
-                    {Array.from(Array(12).keys()).map((month, index) => (
-                        <div className="month" key={index}>{month +1}</div>
-                    ))}
-                </div>
                 <div className="checkboxes-container">
-                    {weeksArray.map((item, index) => (
-                        <CustomCheckbox isDefaultActive={index <= coloredNumber} key={index} disabled={index <= coloredNumber} />
-                    ))}
+                    {divideArrayIntoChunks(produceArrayOfWeeks(weeksArray), WEEKS_IN_YEAR)
+                        .map((chunk, index) =>
+                        <OneYearWeeks yearWeeks={chunk} key={index} />
+                    )}
+                    {/*{weeksArray.map((item, index) => (*/}
+                    {/*    <CustomCheckbox*/}
+                    {/*        isDefaultActive={index <= coloredNumber}*/}
+                    {/*        key={index}*/}
+                    {/*        disabled={index <= coloredNumber} />*/}
+                    {/*))}*/}
                 </div>
             </Layout>
         </>
