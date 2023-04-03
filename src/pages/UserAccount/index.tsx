@@ -1,14 +1,19 @@
 import React, {FunctionComponent, useEffect, useState} from "react";
-import {Layout} from "../../components/Layout/Layout";
 import {useHistory} from "react-router-dom";
-import {CustomCheckbox} from "src/pages/UserAccount/component/Checkbox/CustomCheckbox";
+import dayjs from "dayjs";
+import isoWeeksInYear from "dayjs/plugin/isoWeeksInYear";
+import isLeapYear from "dayjs/plugin/isLeapYear";
+
+import {Layout} from "src/components/Layout/Layout";
 import {OneYearWeeks} from "src/pages/UserAccount/component/OneYearWeeks/OneYearWeeks";
 import "src/pages/UserAccount/UserAccount.scss";
 
+dayjs.extend(isoWeeksInYear);
+dayjs.extend(isLeapYear);
+
 const BIRTH_DATE = "07.08.1996";
-const ALL_WEEKS = 5000;
 const _MS_PER_DAY = 1000 * 60 * 60 * 24;
-const WEEKS_IN_YEAR = 52;
+const AVERAGE_LIFE_YEARS = 80;
 
 const getColoredCheckbox = (birthDate: string) => {
     const endDate = new Date();
@@ -18,31 +23,41 @@ const getColoredCheckbox = (birthDate: string) => {
     return Math.round(Math.floor((utc2 - utc1) / _MS_PER_DAY)/7);
 }
 
+
+
 const coloredNumber = getColoredCheckbox(BIRTH_DATE);
-const weeksArray = Array.from(Array(ALL_WEEKS).keys());
 
 export const divideArrayIntoChunks = (array: Array<number>, chunkSize:number) => {
     const chunks = [];
-    const items = array;
+    const items = [...array];
     while (items.length) {
         chunks.push(
             items.splice(0, chunkSize)
         )
     }
-
     return chunks
 }
 
-const produceArrayOfWeeks = (array: Array<number>) => {
+const produceArrayOfWeeks = (array: Array<number>, passedWeeks = 0) => {
     const arrayToDevelop = JSON.parse(JSON.stringify(array));
-    console.log(arrayToDevelop)
     return arrayToDevelop.map(value => {
         return {
-            checked: value + 1 <= coloredNumber
+            checked: value + passedWeeks  + 1 <= coloredNumber
         }
     })
 }
 
+const getAllWeeks = (birthDate: string, averageLifeYears?: number) => {
+    const birthYear = dayjs(birthDate).year();
+    const years = Array.from(Array(averageLifeYears).keys());
+    let weeksAccumulator = 0;
+    return years.map(year => {
+        const weeksInCurrentYear = dayjs().year(birthYear + year).isoWeeksInYear();
+        const res = produceArrayOfWeeks(Array.from(Array(weeksInCurrentYear).keys()), weeksAccumulator);
+        weeksAccumulator = weeksAccumulator + weeksInCurrentYear;
+        return res;
+    })
+}
 
 export const UserAccount:FunctionComponent = ({}) => {
     const history = useHistory();
@@ -60,17 +75,11 @@ export const UserAccount:FunctionComponent = ({}) => {
         <>
             <Layout>
                 <div>User Account!</div>
-                <div className="checkboxes-container">
-                    {divideArrayIntoChunks(produceArrayOfWeeks(weeksArray), WEEKS_IN_YEAR)
+                <div className="years-container">
+                    {getAllWeeks(BIRTH_DATE, AVERAGE_LIFE_YEARS)
                         .map((chunk, index) =>
                         <OneYearWeeks yearWeeks={chunk} key={index} />
                     )}
-                    {/*{weeksArray.map((item, index) => (*/}
-                    {/*    <CustomCheckbox*/}
-                    {/*        isDefaultActive={index <= coloredNumber}*/}
-                    {/*        key={index}*/}
-                    {/*        disabled={index <= coloredNumber} />*/}
-                    {/*))}*/}
                 </div>
             </Layout>
         </>

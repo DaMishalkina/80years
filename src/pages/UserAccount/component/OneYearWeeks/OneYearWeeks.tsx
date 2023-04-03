@@ -1,6 +1,8 @@
 import React, {useEffect, useState} from "react";
 import { CustomCheckbox } from "src/pages/UserAccount/component/Checkbox/CustomCheckbox";
 
+import "src/pages/UserAccount/component/OneYearWeeks/OneYearWeeks.scss";
+
 interface Props {
     yearWeeks: Array<{checked: false, color?: string}>
 }
