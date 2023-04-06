@@ -3,7 +3,7 @@ import classNames from "classnames";
 import "src/components/TextInput/TextInput.scss";
 
 interface Props {
-    defaultValue: string;
+    defaultValue: string | number;
     onChange: (value: string) => void;
     id?: string;
     type?: "email" | "password" | "text" | "search";
@@ -13,7 +13,8 @@ interface Props {
 }
 
 export const TextInput = ({
-                              label, type = "text",
+                              label,
+                              type = "text",
                               id = "",
                               error = "",
                               defaultValue,
