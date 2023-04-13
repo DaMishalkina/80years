@@ -1,8 +1,8 @@
 import React, {FunctionComponent, useState, useEffect} from "react";
 import {useHistory} from "react-router-dom";
 
-import {Layout} from "src/components/Layout/Layout";
-import "src/pages/UserAccount/UserAccount.scss";
+import {Layout} from "components/Layout/Layout";
+import "pages/UserAccount/UserAccount.scss";
 
 
 

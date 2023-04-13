@@ -1,5 +1,5 @@
 import React, {ReactNode, FunctionComponent} from "react"
-import { Header } from "src/components/Header/Header";
+import { Header } from "components/Header/Header";
 
 interface Props {
     children: ReactNode;

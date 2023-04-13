@@ -1,9 +1,9 @@
-import {RouteItem} from "src/components/Naviagation/types/types";
-import {Home} from "src/pages/Home";
-import {Login} from "src/pages/Login";
-import {Signup} from "src/pages/Signup";
-import {UserAccount} from "src/pages/UserAccount";
-import {TryWeeksTracker} from "src/pages/TryWeeksTracker";
+import {RouteItem} from "components/Naviagation/types/types";
+import {Home} from "pages/Home";
+import {Login} from "pages/Login";
+import {Signup} from "pages/Signup";
+import {UserAccount} from "pages/UserAccount";
+import {TryWeeksTracker} from "pages/TryWeeksTracker";
 
 /*PAGES TITLE*/
 export const PAGE_TITLE_HOME = "Home";

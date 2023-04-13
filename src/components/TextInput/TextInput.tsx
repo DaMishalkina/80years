@@ -1,15 +1,16 @@
 import React, {useState, useEffect} from "react";
 import classNames from "classnames";
-import "src/components/TextInput/TextInput.scss";
+import "components/TextInput/TextInput.scss";
 
 interface Props {
-    defaultValue: string | number;
-    onChange: (value: string) => void;
+    defaultValue?: string | number;
+    onChange?: (value: string) => void;
     id?: string;
     type?: "email" | "password" | "text" | "search";
     label?: string;
     placeholder?: string;
     error?: string;
+    name?: string;
 }
 
 export const TextInput = ({
@@ -19,7 +20,9 @@ export const TextInput = ({
                               error = "",
                               defaultValue,
                               onChange,
-                              placeholder = ""}: Props) => {
+                              placeholder = "",
+                              name
+                            }: Props) => {
     const [keyValue, setKeyValue] = useState(defaultValue);
     useEffect(() => {
         setKeyValue(defaultValue);
@@ -28,6 +31,7 @@ export const TextInput = ({
         <label className="text-input-container">
             {label}
             <input
+                name={name}
                 {...(id.length > 0 && {id: id})}
                 className={classNames(
                     "text-input-container__input",
@@ -40,8 +44,9 @@ export const TextInput = ({
                 value={keyValue}
                 onChange={(event) => {
                     setKeyValue(event?.target?.value);
-                    onChange(event?.target?.value);
-                }}/>
+                    onChange && onChange(event?.target?.value);
+                }}
+            />
         </label>
     )
 }

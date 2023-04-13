@@ -1,6 +1,6 @@
 import React from "react";
 import classNames from "classnames";
-import "src/components/Button/Button.scss";
+import "components/Button/Button.scss";
 
 interface Props {
     label: string;

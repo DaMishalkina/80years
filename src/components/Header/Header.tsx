@@ -1,8 +1,8 @@
 import React, {useEffect, useState} from "react";
 import {NavLink} from "react-router-dom";
-import {auth} from "src/firebaseSetup";
+import {auth} from "firebaseSetup";
 import { useHistory } from "react-router-dom";
-import "src/components/Header/Header.scss";
+import "components/Header/Header.scss";
 
 interface Props {
     text?: string;

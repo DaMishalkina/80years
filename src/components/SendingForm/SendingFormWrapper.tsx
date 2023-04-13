@@ -1,7 +1,7 @@
 import React, {FormEvent, useState} from "react";
-import { auth } from "src/firebaseSetup";
-import {LoginItem} from "src/components/SendingForm/types";
-import { SendingForm } from "src/components/SendingForm/SendingForm";
+import { auth } from "firebaseSetup";
+import {LoginItem} from "components/SendingForm/types";
+import { SendingForm } from "components/SendingForm/SendingForm";
 import { useHistory } from "react-router-dom";
 
 interface Props {

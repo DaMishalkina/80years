@@ -1,10 +1,10 @@
 import React, {useState, useEffect} from "react";
-import {OneYearWeeks} from "src/components/WeeksSection/OneYearWeeks/OneYearWeeks";
+import {OneYearWeeks} from "components/WeeksSection/OneYearWeeks/OneYearWeeks";
 import dayjs from "dayjs";
 import isoWeeksInYear from "dayjs/plugin/isoWeeksInYear";
 import isLeapYear from "dayjs/plugin/isLeapYear";
 import customParseFormat from "dayjs/plugin/customParseFormat";
-import "src/components/WeeksSection/WeeksSectionComponent/WeeksSection.scss";
+import "components/WeeksSection/WeeksSectionComponent/WeeksSection.scss";
 
 dayjs.extend(isoWeeksInYear);
 dayjs.extend(isLeapYear);

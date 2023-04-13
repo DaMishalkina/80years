@@ -1,6 +1,6 @@
 import React, {ReactNode} from "react";
 import classNames from "classnames";
-import "src/components/Modal/Modal.scss";
+import "components/Modal/Modal.scss";
 
 interface Props {
     children: ReactNode;

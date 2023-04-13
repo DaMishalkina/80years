@@ -1,5 +1,5 @@
 import React, {FunctionComponent} from "react";
-import {Layout} from "src/components/Layout/Layout";
+import {Layout} from "components/Layout/Layout";
 
 export const Home:FunctionComponent = ({}) => {
     return (

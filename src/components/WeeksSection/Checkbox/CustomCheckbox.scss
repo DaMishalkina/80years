@@ -1,0 +1,32 @@
+.custom-checkbox__container {
+  position: relative;
+  height: 2px;
+  width: 2px;
+  padding: 2px;
+}
+
+.custom-checkbox__checkmark {
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 50%;
+  cursor: pointer;
+  height: 2px;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 2px;
+}
+
+.custom-checkbox__input[type="checkbox"] {
+  position: absolute;
+  top: 0;
+  left: 0;
+  visibility: hidden;
+  width: 0;
+  height: 0;
+}
+
+.custom-checkbox__input[type="checkbox"]:checked + .custom-checkbox__checkmark {
+  background-color: #66bb6a;
+  border-color: #66bb6a;
+}

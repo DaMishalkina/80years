@@ -1,6 +1,6 @@
 import React, {FunctionComponent} from "react";
-import { SendingFormWrapper } from "src/components/SendingForm/SendingFormWrapper";
-import "src/pages/Login/Login.scss";
+import { SendingFormWrapper } from "components/SendingForm/SendingFormWrapper";
+import "pages/Login/Login.scss";
 
 
 export const Login: FunctionComponent = () => {

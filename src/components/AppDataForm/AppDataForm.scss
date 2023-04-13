@@ -1,0 +1,12 @@
+@use "../style/StyleVariables" as Variables;
+
+.error-container {
+  margin-top: 16px;
+  padding: 16px;
+  border-radius: 4px;
+  background-color: Variables.$error-background-color;
+}
+
+.error-container__message {
+  color: Variables.$error-color;
+}

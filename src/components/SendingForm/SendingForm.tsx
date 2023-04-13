@@ -1,10 +1,10 @@
 import React, {FormEvent, useEffect, useState} from "react";
-import {TextInput} from "src/components/TextInput/TextInput";
-import {Button} from "src/components/Button/Button";
+import {TextInput} from "components/TextInput/TextInput";
+import {Button} from "components/Button/Button";
 import {NavLink,} from "react-router-dom";
-import {LoginItem} from "src/components/SendingForm/types";
+import {LoginItem} from "components/SendingForm/types";
 import classNames from "classnames";
-import "src/components/SendingForm/SendingForm.scss";
+import "components/SendingForm/SendingForm.scss";
 
 interface Props {
     formData: {login: string, password: string};

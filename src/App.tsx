@@ -1,7 +1,7 @@
 import React, {FunctionComponent, ReactElement} from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import { ROUTES } from "src/components/Naviagation/constants/constants";
-import {RouteItem} from "src/components/Naviagation/types/types";
+import { ROUTES } from "components/Naviagation/constants/constants";
+import {RouteItem} from "components/Naviagation/types/types";
 import './App.scss';
 
 const DefaultComponent: FunctionComponent = (): ReactElement => (
