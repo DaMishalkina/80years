@@ -32,7 +32,7 @@ export const SendingFormWrapper = ({type = "login"}: Props) => {
                     })
             } else {
                 await auth.createUserWithEmailAndPassword(item.login, item.password)
-                    .then((response) => {
+                    .then(() => {
                         handleReset(event);
                     }).catch((error) => {
                         setErrorMessage(error.message)
@@ -50,7 +50,7 @@ export const SendingFormWrapper = ({type = "login"}: Props) => {
             linkToAnotherForm={type === "login" ? "/signup" : ""}
             linkText={ type === "login" ? "If you have not account yet, please sign up" : ""}
             onSubmit={(item, event) => handleSubmit(item, event)}
-            error={errorMessage}
+            defaultError={errorMessage}
         />
     )
 }

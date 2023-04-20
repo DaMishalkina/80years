@@ -1,17 +1,23 @@
 import React, {useEffect, useState} from "react";
 import "components/WeeksSection/Checkbox/CustomCheckbox.scss";
 
-interface Props {
+export interface Props {
     isDefaultActive?: boolean;
     disabled?: boolean;
     id?: string | number;
-    // onCheck: () => void;
+    onChange?: () => void;
 }
 
-export const CustomCheckbox = ({isDefaultActive = false, disabled = false, id}: Props) => {
+export const CustomCheckbox = ({
+                                   isDefaultActive = false,
+                                   disabled = false,
+                                   id,
+                                   onChange
+                                }: Props) => {
     const [isActive, setIsActive] = useState(isDefaultActive);
 
     const onCheck = () => {
+        onChange && onChange();
         setIsActive(!isActive)
     }
     useEffect(() => {

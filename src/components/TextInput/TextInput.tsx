@@ -9,7 +9,7 @@ interface Props {
     type?: "email" | "password" | "text" | "search";
     label?: string;
     placeholder?: string;
-    error?: string;
+    error?: boolean;
     name?: string;
 }
 
@@ -17,7 +17,7 @@ export const TextInput = ({
                               label,
                               type = "text",
                               id = "",
-                              error = "",
+                              error = false,
                               defaultValue,
                               onChange,
                               placeholder = "",
@@ -35,7 +35,7 @@ export const TextInput = ({
                 {...(id.length > 0 && {id: id})}
                 className={classNames(
                     "text-input-container__input",
-                    error?.length > 0
+                    error
                         ? "text-input-container__input--error"
                         : ""
                 )}

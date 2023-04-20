@@ -3,7 +3,6 @@ import {TextInput} from "components/TextInput/TextInput";
 import {Button} from "components/Button/Button";
 import {NavLink,} from "react-router-dom";
 import {LoginItem} from "components/SendingForm/types";
-import classNames from "classnames";
 import "components/SendingForm/SendingForm.scss";
 
 interface Props {
@@ -13,7 +12,7 @@ interface Props {
     onReset: (event: FormEvent<HTMLFormElement>) => void;
     loginLabel?: string;
     passwordLabel?: string;
-    error?: string;
+    defaultError?: string;
     linkToAnotherForm?: string;
     linkText?: string;
 }
@@ -22,27 +21,27 @@ export const SendingForm = ({
 
                                 formData,
                                 onInput,
-                                error = "",
+                                defaultError = "",
                                 loginLabel = "",
                                 passwordLabel = "",
                                 linkToAnotherForm = "",
                                 linkText = "",
                                 onReset,
                                 onSubmit}: Props) => {
-    const [isError, setIsError] = useState(error);
+    const [error, setError] = useState(defaultError);
     const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
-        if(formData.login.length > 0 && formData.password?.length > 0 && error?.length === 0){
-            setIsError("");
+        if(formData.login.length > 0 && formData.password?.length > 0 && defaultError?.length === 0){
+            setError("");
             const newDataItem: LoginItem = formData;
             onSubmit(newDataItem, event);
         } else {
-            setIsError("Fields are required");
+            setError("Fields are required");
         }
     };
     useEffect(() => {
-        setIsError(error);
-    }, [error])
+        setError(defaultError);
+    }, [defaultError])
     return (
         <form
             className="form-container"
@@ -54,21 +53,21 @@ export const SendingForm = ({
             <TextInput
                 label={loginLabel}
                 defaultValue={formData.login}
-                error={isError}
+                error={error.length > 0}
                 onChange={(value) => {
                     onInput(value, "login")
-                    setIsError("")
+                    setError("")
                 }} />
             <TextInput
                 label={passwordLabel}
                 defaultValue={formData.password}
-                error={isError}
+                error={error.length > 0}
                 onChange={(value) => {
                     onInput(value, "password")
-                    setIsError("")
+                    setError("")
                 }}
                 type="password" />
-            {isError.length > 0 && (
+            {error.length > 0 && (
                 <div className="form-container__error-container error-container">
                     <span className="error-container__message">{error}</span>
                 </div>

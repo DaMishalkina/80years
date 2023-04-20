@@ -84,15 +84,16 @@ export const  AppDataForm = ({
     }
 
     return (
-       <form ref={formRef}>
+       <form className="form-container" ref={formRef}>
            <TextInput
+               error={isError}
                name="birthDate"
                defaultValue={birthDate}
                placeholder="DD/MM/YYYY"
                onChange={onBirtDateChange}
            />
            <TextInput name="totalYears" defaultValue={totalYears} />
-           <button type="submit" onClick={handleSubmit}>Submit</button>
+           <button className="" type="submit" onClick={handleSubmit}>Submit</button>
            {isError && (
                <div className="form-container__error-container error-container">
                    <span className="error-container__message">Invalid date format</span>

@@ -1,0 +1,16 @@
+@import "src/components/style/StyleVariables";
+.page-container {
+  height: 100vh;
+  overflow: auto;
+  box-sizing: border-box;
+  position: relative;
+}
+
+.page__section {
+  padding: 0 16px;
+}
+
+
+@media (min-width: $screen--md) {
+
+}

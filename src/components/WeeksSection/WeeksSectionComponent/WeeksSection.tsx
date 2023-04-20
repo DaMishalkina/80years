@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from "react";
 import {OneYearWeeks} from "components/WeeksSection/OneYearWeeks/OneYearWeeks";
+import {ToggledOneYear} from "components/WeeksSection/ToggledOneYear/ToggledOneYear";
 import dayjs from "dayjs";
 import isoWeeksInYear from "dayjs/plugin/isoWeeksInYear";
 import isLeapYear from "dayjs/plugin/isLeapYear";
@@ -18,9 +19,30 @@ interface Props {
 
 type OneYearWeeksType = Array<{checked: boolean}>;
 
-type AllWeeksType = OneYearWeeksType[];
+type AllWeeksType = { weeks: OneYearWeeksType, mobileHidden: boolean }[];
 
 const _MS_PER_DAY = 1000 * 60 * 60 * 24;
+
+const calculateAge = (birthDate) => {
+    const todayDate = new Date();
+    const todayYear = todayDate.getFullYear();
+    const todayMonth = todayDate.getMonth();
+    const today = todayDate.getDate();
+    const birthMonth = dayjs(birthDate).month();
+    const  birthDay = dayjs(birthDate).date();
+    let age = todayYear - dayjs(birthDate).year();
+
+    if ( todayMonth < (birthMonth - 1))
+    {
+        age--;
+    }
+    if (((birthMonth - 1) == todayMonth) && (today < birthDay))
+    {
+        age--;
+    }
+    return age;
+}
+
 
 const convertDDMMYYYToDate = (dateString: string) => {
     return dayjs(dateString, "DD/MM/YYYY").toDate();
@@ -47,13 +69,19 @@ export const produceArrayOfWeeks = (array: Array<number>, passedWeeks = 0, color
     })
 }
 
-export const getAllWeeks = (birthDate: string, averageLifeYears: number, coloredNumber = 0) => {
-    const birthYear = dayjs(convertDDMMYYYToDate(birthDate)).year();
+export const getAllWeeks = (birthDate: Date | string, averageLifeYears: number, coloredNumber = 0) => {
+    const birthYear = dayjs(birthDate).year();
     const years = createArrayFromNumber(averageLifeYears);
     let weeksAccumulator = 0;
     return years.map(year => {
-        const weeksInCurrentYear = dayjs().year(birthYear + year).isoWeeksInYear();
-        const res = produceArrayOfWeeks(createArrayFromNumber(weeksInCurrentYear), weeksAccumulator, coloredNumber);
+        const currentYearDate = dayjs().year(birthYear + year);
+        const weeksInCurrentYear = currentYearDate.isoWeeksInYear();
+        const res = {
+            weeks: produceArrayOfWeeks(
+                createArrayFromNumber(weeksInCurrentYear), weeksAccumulator, coloredNumber
+            ),
+            mobileHidden: year < calculateAge(birthDate)
+        };
         weeksAccumulator = weeksAccumulator + weeksInCurrentYear;
         return res;
     })
@@ -64,18 +92,20 @@ export const WeeksSection = ({birthDate, totalYears}: Props) => {
    useEffect(() => {
        setColoredNumber( () => {
            const res = getColoredCheckbox(birthDate);
-           setAllWeeks(getAllWeeks(birthDate, totalYears, res));
+           setAllWeeks(getAllWeeks(convertDDMMYYYToDate(birthDate), totalYears, res));
            return res;
        });
    }, [birthDate, totalYears])
     return (
-        <div>
-            <div className="years-container">
-                {birthDate.length > 0 && allWeeks
-                    .map((chunk, index) =>
-                        <OneYearWeeks yearWeeks={chunk} key={index} />
-                    )}
-            </div>
+        <div className="years-container">
+            {birthDate.length > 0 && allWeeks
+                .map((chunk, index) =>
+                    chunk.mobileHidden ?
+                        <ToggledOneYear key={index}>
+                            <OneYearWeeks yearWeeks={chunk.weeks} key={index} />
+                        </ToggledOneYear>
+                        : <OneYearWeeks yearWeeks={chunk.weeks} key={index} />
+                )}
         </div>
     )
 }
