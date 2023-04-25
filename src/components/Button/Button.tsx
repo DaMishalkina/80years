@@ -14,10 +14,6 @@ const isDefault = (variant = "default") => {
     return variant === "default";
 };
 
-const setButtonClasses = (variant = "default") => {
-
-}
-
 export const Button = ({label, type, variant = "default", disabled = false, onClick }: Props) => {
  return (
      <button
