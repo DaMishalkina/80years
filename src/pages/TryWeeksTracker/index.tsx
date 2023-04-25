@@ -1,7 +1,7 @@
 import React, {FunctionComponent, useState} from "react";
 import {Layout} from "components/Layout/Layout";
 import {WeeksSection} from "components/WeeksSection/WeeksSectionComponent/WeeksSection";
-import {AppDataForm} from "components/AppDataForm/AppDataForm";
+import {AppDataFormWrapper} from "components/Forms/AppDataForm/AppDataFormWrapper";
 import "pages/TryWeeksTracker/index.scss";
 
 const AVERAGE_LIFE_YEARS = 80;
@@ -24,7 +24,7 @@ export const TryWeeksTracker: FunctionComponent = ({}) => {
                 <section className="page__section">
                     {!isFormOpened && <button onClick={toggleForm}>Form</button>}
                     {isFormOpened &&
-                        <AppDataForm
+                        <AppDataFormWrapper
                             onSubmit={onSubmit}
                             defaultTotalYears={totalYears}
                             defaultBirthDate={birthDate} />

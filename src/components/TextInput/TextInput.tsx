@@ -4,7 +4,7 @@ import "components/TextInput/TextInput.scss";
 
 interface Props {
     defaultValue?: string | number;
-    onChange?: (value: string) => void;
+    onChange?: (value: string | number, id?: string) => void,
     id?: string;
     type?: "email" | "password" | "text" | "search";
     label?: string;
@@ -44,7 +44,7 @@ export const TextInput = ({
                 value={keyValue}
                 onChange={(event) => {
                     setKeyValue(event?.target?.value);
-                    onChange && onChange(event?.target?.value);
+                    onChange && onChange(event?.target?.value, event?.target?.id);
                 }}
             />
         </label>

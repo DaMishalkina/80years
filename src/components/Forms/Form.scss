@@ -1,4 +1,4 @@
-@use "../style/StyleVariables" as Variables;
+@import "src/components/style/StyleVariables";
 
 .form-container {
   display: flex;
@@ -13,9 +13,9 @@
   margin-top: 16px;
   padding: 16px;
   border-radius: 4px;
-  background-color: Variables.$error-background-color;
+  background-color: $error-background-color;
 }
 
 .error-container__message {
-  color: Variables.$error-color;
+  color: $error-color;
 }

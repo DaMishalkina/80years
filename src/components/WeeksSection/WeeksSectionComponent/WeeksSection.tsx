@@ -86,16 +86,17 @@ export const getAllWeeks = (birthDate: Date | string, averageLifeYears: number, 
         return res;
     })
 }
+
 export const WeeksSection = ({birthDate, totalYears}: Props) => {
     const [coloredNumber, setColoredNumber] = useState(0 )
     const [allWeeks, setAllWeeks]= useState([] as AllWeeksType);
-   useEffect(() => {
-       setColoredNumber( () => {
-           const res = getColoredCheckbox(birthDate);
-           setAllWeeks(getAllWeeks(convertDDMMYYYToDate(birthDate), totalYears, res));
-           return res;
-       });
-   }, [birthDate, totalYears])
+    useEffect(() => {
+        setColoredNumber( () => {
+            const res = getColoredCheckbox(birthDate);
+            setAllWeeks(getAllWeeks(convertDDMMYYYToDate(birthDate), totalYears, res));
+            return res;
+        });
+        }, [birthDate, totalYears])
     return (
         <div className="years-container">
             {birthDate.length > 0 && allWeeks

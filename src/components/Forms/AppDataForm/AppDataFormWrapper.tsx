@@ -1,6 +1,7 @@
 import React, {useState, useRef} from "react";
-import "components/AppDataForm/AppDataForm.scss";
+import "components/Forms/AppDataForm/AppDataFormWrapper.scss";
 import {TextInput} from "components/TextInput/TextInput";
+import {Form} from "../Form";
 
 interface Props {
     defaultBirthDate?: string,
@@ -49,7 +50,7 @@ const valDate = (date) => {
 }
 
 
-export const  AppDataForm = ({
+export const  AppDataFormWrapper = ({
                                  defaultBirthDate = "",
                                  defaultTotalYears = 80,
                                  onSubmit}
@@ -84,21 +85,16 @@ export const  AppDataForm = ({
     }
 
     return (
-       <form className="form-container" ref={formRef}>
-           <TextInput
-               error={isError}
-               name="birthDate"
-               defaultValue={birthDate}
-               placeholder="DD/MM/YYYY"
-               onChange={onBirtDateChange}
-           />
-           <TextInput name="totalYears" defaultValue={totalYears} />
-           <button className="" type="submit" onClick={handleSubmit}>Submit</button>
-           {isError && (
-               <div className="form-container__error-container error-container">
-                   <span className="error-container__message">Invalid date format</span>
-               </div>
-           )}
-       </form>
+        <>
+            <Form
+                inputs={[
+                    {value: birthDate, placeholder: "DD/MM/YYYY", name: "birthDate", onChange: onBirtDateChange, isError: isError},
+                    {value: totalYears, name: "totalYears"}
+                ]}
+                formRef={formRef}
+                onSubmit={handleSubmit}
+                error={isError && "Invalid date format"}
+            />
+        </>
     )
 }
