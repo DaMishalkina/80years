@@ -1,9 +1,29 @@
+@import "components/style/StyleVariables";
 body {
   font-family: DM Sans, sans-serif;
+}
+
+.page__section {
+  max-width: 1024px;
+  margin: 0 auto;
 }
 a {
   list-style: none;
   text-decoration: none;
+}
+
+.link {
+  color: $main-blue;
+  font-family: DM Sans, sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 26px;
+  &:hover {
+    color: $main-blue--hover;
+  }
+  &:focus {
+    color: $main-blue--focus;
+  }
 }
 
 .App {

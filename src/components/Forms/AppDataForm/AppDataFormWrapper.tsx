@@ -1,7 +1,6 @@
 import React, {useState, useRef} from "react";
 import "components/Forms/AppDataForm/AppDataFormWrapper.scss";
-import {TextInput} from "components/TextInput/TextInput";
-import {Form} from "../Form";
+import {Form} from "components/Forms/Form";
 
 interface Props {
     defaultBirthDate?: string,
@@ -89,7 +88,7 @@ export const  AppDataFormWrapper = ({
             <Form
                 inputs={[
                     {value: birthDate, placeholder: "DD/MM/YYYY", name: "birthDate", onChange: onBirtDateChange, isError: isError},
-                    {value: totalYears, name: "totalYears"}
+                    {value: totalYears, name: "totalYears", isError: isError}
                 ]}
                 formRef={formRef}
                 onSubmit={handleSubmit}

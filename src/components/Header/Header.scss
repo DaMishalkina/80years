@@ -13,29 +13,12 @@
   margin: 0 auto;
 }
 
-.header__link {
-  color: $main-blue;
-  font-family: DM Sans, sans-serif;
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 26px;
-}
-
 .logo__link {
   list-style: none;
   margin: 0;
   font-weight: 700;
   font-size: 22px;
   line-height: 31px;
-}
-
-.header__link:hover {
-  color: $main-blue--hover;
-}
-
-.header__link:focus {
-  color: $main-blue--focus;
-
 }
 
 .signup-link {
@@ -46,6 +29,15 @@
   line-height: 22px;
   background: $secondary-color;
   border-radius: 100px;
+  border: 2px solid $secondary-color;
+  &:hover {
+    background: $secondary-color--hover;
+    border: 2px solid $secondary-color--hover;
+  }
+  &:focus {
+    background: $secondary-color--focus;
+    border: 2px solid $secondary-color--focus;
+  }
 }
 
 .hamburger-button {
@@ -54,6 +46,12 @@
   width:30px;
   cursor:pointer;
   justify-content: center;
+  &:hover .hamburger-button__span {
+    background: $main-blue--hover;
+  }
+  &:focus .hamburger-button__span {
+    background: $main-blue--focus;
+  }
 }
 
 .hamburger-button__span {
@@ -62,14 +60,6 @@
   height:2px;
   margin: 2px 0;
   transition: .4s  cubic-bezier(0.68, -0.6, 0.32, 1.6);
-}
-
-.hamburger-button:hover .hamburger-button__span {
-  background: $main-blue--hover;
-}
-
-.hamburger-button:focus .hamburger-button__span {
-  background: $main-blue--focus;
 }
 
 .hamburger-button__span:nth-of-type(1){
@@ -154,6 +144,16 @@
     flex-direction: row;
     align-items: center;
     gap: 16px;
+  }
+
+  .header__link {
+    font-size: 18px;
+  }
+  .signup-link {
+    font-size: 16px;
+  }
+  .logo__link {
+    font-size: 22px;
   }
 
 }

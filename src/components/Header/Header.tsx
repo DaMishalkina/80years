@@ -47,7 +47,7 @@ export const Header = ({}: Props) => {
                 <div className="navigation__container">
                     {history?.location?.pathname !== "/weeks_tracker" &&
                         <NavLink
-                            className="header__link"
+                            className="link header__link"
                             to={"/weeks_tracker"}
                         >
                             Weeks Tracker
@@ -56,7 +56,7 @@ export const Header = ({}: Props) => {
                     {!isAuth ?
                         <div className="navigation__item">
                             <NavLink
-                                className="header__link"
+                                className="header__link link "
                                 to={"/login"}
                             >
                                 Log in

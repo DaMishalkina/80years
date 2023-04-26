@@ -3,14 +3,13 @@
 .form-container {
   display: flex;
   flex-direction: column;
-  gap: 30px;
+  gap: 24px;
 }
 
 .form-container__buttons {
   margin-top: 16px;
 }
 .error-container {
-  margin-top: 16px;
   padding: 16px;
   border-radius: 4px;
   background-color: $error-background-color;
@@ -18,4 +17,24 @@
 
 .error-container__message {
   color: $error-color;
+}
+
+.actions {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.actions__buttons {
+  display: flex;
+  gap: 12px;
+}
+
+@media (min-width: $screen--md) {
+  .form-container {
+    gap: 30px;
+  }
+  .actions {
+    gap: 30px;
+  }
 }

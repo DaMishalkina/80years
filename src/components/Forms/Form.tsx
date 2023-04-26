@@ -1,4 +1,4 @@
-import React, {FormEvent, LegacyRef, useState} from "react";
+import React, {FormEvent, LegacyRef} from "react";
 import "components/Forms/Form.scss";
 import {TextInput} from "components/TextInput/TextInput";
 import {Button} from "components/Button/Button";
@@ -29,7 +29,7 @@ export const Form = ({
 }: Props) => {
     const formButtons = buttons ? buttons : [
             {type: "submit", label: "Submit"},
-            ...(typeof onReset !== undefined && [{type: "reset", label: "Reset"}])
+            ...(typeof onReset !== "undefined" ? [{type: "reset", label: "Reset"}] :[])
         ];
     return (
         <form
@@ -55,14 +55,28 @@ export const Form = ({
                     <span className="error-container__message">{error}</span>
                 </div>
             )}
-            {(typeof formButtons !== undefined || typeof links !== undefined) &&
-                <div>
-                    {typeof formButtons !== undefined && formButtons?.map((button, index) =>
-                        <Button key={index} label={button?.label} type={button?.type} />
-                    )}
-                    {typeof links !== undefined && links?.map((link, index) =>
-                            <NavLink key={index} to={link?.path}>{link?.text}</NavLink>
+            {(typeof formButtons !== "undefined" || typeof links !== undefined) &&
+                <div className="actions form-container__actions">
+                    {typeof formButtons !== "undefined" &&
+                    <div className="actions__buttons">
+                        {formButtons?.map((button, index) =>
+                            <Button
+                                key={index}
+                                label={button?.label}
+                                type={button?.type}
+                                variant="primary"
+                                size="responsive"
+                            />
                         )}
+                    </div>
+                    }
+                    {typeof links !== "undefined" &&
+                        <div className="actions__links">
+                            {links?.map((link, index) =>
+                                <NavLink className="link action__link" key={index} to={link?.path}>{link?.text}</NavLink>
+                            )}
+                        </div>
+                    }
                 </div>
             }
         </form>

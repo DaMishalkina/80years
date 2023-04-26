@@ -54,9 +54,10 @@ export const SendingFormWrapper = ({type = "login"}: Props) => {
     const setInputs = () => {
         return Object.entries(formData).map(data => {
             const [key, value] = data;
-            return {value: value, placeholder: key, id: key}
+            return {value: value, placeholder: key, id: key, isError: error.length > 0}
         })
     }
+
     return (
         <Form
             inputs={setInputs()}
@@ -64,7 +65,7 @@ export const SendingFormWrapper = ({type = "login"}: Props) => {
             onReset={handleReset}
             onChange={handleInput}
             error={error}
-            links={type === "login" && [{path: "/signup", text: "If you have not an account yet, please sign up"}]}
+            links={type === "login" ? [{path: "/signup", text: "If you have not an account yet, please sign up"}] : []}
         />
     )
 }
