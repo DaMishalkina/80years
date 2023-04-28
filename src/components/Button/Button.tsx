@@ -1,6 +1,7 @@
 import React from "react";
 import classNames from "classnames";
 import "components/Button/Button.scss";
+import "components/Button/ButtonDarkMode.scss";
 
 interface Props {
     label: string,

@@ -5,7 +5,7 @@
   top: 0;
   left: 0;
   padding: 16px;
-  background: $bg-color-light;
+  background: $main-bg-color;
   display: flex;
   justify-content: space-between;
   align-content: center;
@@ -21,8 +21,14 @@
   line-height: 31px;
 }
 
+.header__actions {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+
 .signup-link {
-  color: $bg-color-light;
+  color: $main-bg-color;
   padding: 9px 21px;
   font-weight: 500;
   font-size: 16px;
@@ -47,15 +53,15 @@
   cursor:pointer;
   justify-content: center;
   &:hover .hamburger-button__span {
-    background: $main-blue--hover;
+    background: $main-color--hover;
   }
   &:focus .hamburger-button__span {
-    background: $main-blue--focus;
+    background: $main-color--focus;
   }
 }
 
 .hamburger-button__span {
-  background: $main-blue;
+  background: $main-color;
   border-radius:10px;
   height:2px;
   margin: 2px 0;
@@ -103,7 +109,7 @@
   top: 63px;
   left: 0;
   display: flex;
-  background: $bg-color-light;
+  background: $main-bg-color;
   height: calc(100vh - 63px);
   width: 100vw;
   box-sizing: border-box;
