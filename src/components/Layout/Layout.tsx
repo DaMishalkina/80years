@@ -2,8 +2,8 @@ import React, {ReactNode, FunctionComponent} from "react"
 import { Header } from "components/Header/Header";
 
 interface Props {
-    children: ReactNode;
-    pageClassName?: string;
+    children: ReactNode,
+    pageClassName?: string
 }
 
 

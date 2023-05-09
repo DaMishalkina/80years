@@ -8,7 +8,7 @@ interface Props {
     toggleLabel?: string
     icons?: { checked?: string, unchecked?: string },
     ariaLabel?: string,
-    toggleClassname?: string,
+    toggleClassname?: string
 }
 export const Toggle = ({
                            checked,

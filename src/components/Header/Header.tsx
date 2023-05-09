@@ -4,16 +4,18 @@ import { useHistory } from "react-router-dom";
 import {NavLink} from "react-router-dom";
 import { Toggle } from "components/Toggle/Toggle";
 import {useColorScheme} from "services/hooks/useColorScheme";
+import useMediaQuery from "services/hooks/useMediaQuery";
 import {auth} from "firebaseSetup";
 import "components/Header/Header.scss";
 
 interface Props {
-    text?: string;
+    text?: string
 }
 
 export const Header = ({}: Props) => {
     const [isAuth, setIsAuth] = useState(false);
     const [isToggled, setIsToggled] = useState(false);
+    const isMobile = useMediaQuery( "(max-width: 765px)");
     const history = useHistory();
     const { isDark, setIsDark } = useColorScheme();
 
@@ -23,7 +25,6 @@ export const Header = ({}: Props) => {
         history.push("/");
 
     }
-    console.log(isDark)
     const toggleNavigation = () => {
         setIsToggled(!isToggled);
     }
@@ -56,7 +57,7 @@ export const Header = ({}: Props) => {
                     <span aria-hidden="true" className="hamburger-button__span"></span>
                 </label>
             </div>
-            <div className={classNames("navigation header__navigation", isToggled && "navigation--opened")}>
+            <div className={classNames("navigation header__navigation", isToggled && isMobile && "navigation--opened")}>
                 <div className="navigation__container">
                     {history?.location?.pathname !== "/weeks_tracker" &&
                         <NavLink

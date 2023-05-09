@@ -1,15 +1,16 @@
-import React from "react";
+import React, {ReactElement} from "react";
 import classNames from "classnames";
 import "components/Button/Button.scss";
 import "components/Button/ButtonDarkMode.scss";
 
 interface Props {
     label: string,
-    onClick?:(event: MouseEvent) => void,
+    onClick?:() => void,
     type?: "submit" | "reset" | "button",
     disabled?: boolean,
     size?: "small" | "large" | "responsive",
-    variant?: "default" | "primary" | "secondary" | "third"
+    variant?: "default" | "primary" | "secondary" | "third",
+    icon?: ReactElement
 }
 
 const isLarge = (size = "large") => {
@@ -61,13 +62,17 @@ export const Button = ({
                            variant = "default",
                            size = "small",
                            disabled = false,
+                           icon,
                            onClick }: Props) => {
  return (
      <button
          className={classNames("button", setButtonClasses(variant, size, disabled))}
          type={type}
          disabled={disabled}
-         onClick={() => onClick}
-     >{label}</button>
+         onClick={onClick}
+     >
+         {label}
+         {icon !== undefined && icon}
+     </button>
  )
 }

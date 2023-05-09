@@ -1,6 +1,9 @@
 @import "src/components/style/StyleVariables";
 
 .button {
+  display: flex;
+  gap: 6px;
+  align-items: center;
   padding: 7px 20px;
   font-family: DM Sans, sans-serif;
   font-weight: 500;

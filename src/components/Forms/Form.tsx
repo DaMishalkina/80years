@@ -1,4 +1,5 @@
 import React, {FormEvent, LegacyRef} from "react";
+import classNames from "classnames";
 import "components/Forms/Form.scss";
 import {TextInput} from "components/TextInput/TextInput";
 import {Button} from "components/Button/Button";
@@ -14,7 +15,8 @@ interface Props {
     buttons?: FormButtons,
     error?: string,
     onChange?: (value: string | number, id?: string) => void,
-    formRef?: LegacyRef<HTMLFormElement>
+    formRef?: LegacyRef<HTMLFormElement>,
+    formClassNames?: string
 }
 
 export const Form = ({
@@ -25,7 +27,8 @@ export const Form = ({
                          buttons,
                          error = "",
                          onChange,
-                         formRef
+                         formRef,
+                         formClassNames = ""
 }: Props) => {
     const formButtons = buttons ? buttons : [
             {type: "submit", label: "Submit"},
@@ -33,7 +36,7 @@ export const Form = ({
         ];
     return (
         <form
-            className="form-container"
+            className={classNames("form-container", formClassNames)}
             onSubmit={onSubmit}
             onReset={onReset}
             ref={formRef}>

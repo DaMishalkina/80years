@@ -5,7 +5,7 @@ import { useHistory } from "react-router-dom";
 import {Form} from "components/Forms/Form";
 
 interface Props {
-    type?: "login" | "signup";
+    type?: "login" | "signup"
 }
 
 export const SendingFormWrapper = ({type = "login"}: Props) => {

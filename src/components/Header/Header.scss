@@ -5,12 +5,13 @@
   top: 0;
   left: 0;
   padding: 16px;
-  background: $main-bg-color;
   display: flex;
   justify-content: space-between;
   align-content: center;
   max-width: 1024px;
   margin: 0 auto;
+  background: var(--header-bg, $main-bg-color);
+  z-index: 100;
 }
 
 .logo__link {
@@ -19,6 +20,13 @@
   font-weight: 700;
   font-size: 22px;
   line-height: 31px;
+  color: var(--logo-link-color, $main-color);
+  &:hover {
+    --logo-link-color: #{$main-color--hover};
+  }
+  &:focus {
+    --logo-link-color: #{$main-color--focus};
+  }
 }
 
 .header__actions {

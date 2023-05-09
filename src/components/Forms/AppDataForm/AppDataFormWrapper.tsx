@@ -5,7 +5,8 @@ import {Form} from "components/Forms/Form";
 interface Props {
     defaultBirthDate?: string,
     defaultTotalYears?: number,
-    onSubmit: (data: {birthDate: string, totalYears?: number }) => void
+    onSubmit: (data: {birthDate: string, totalYears?: number }) => void,
+    formClassNames?: string
 
 
 }
@@ -50,10 +51,11 @@ const valDate = (date) => {
 
 
 export const  AppDataFormWrapper = ({
-                                 defaultBirthDate = "",
-                                 defaultTotalYears = 80,
-                                 onSubmit}
-                                 : Props) => {
+                                        defaultBirthDate = "",
+                                        defaultTotalYears = 80,
+                                        onSubmit,
+                                        formClassNames = ""
+}: Props) => {
     const [birthDate, setBirthDate] = useState(defaultBirthDate);
     const [totalYears, setTotalYears] = useState(defaultTotalYears.toString());
     const [isError, setIsError] = useState(false);
@@ -86,6 +88,7 @@ export const  AppDataFormWrapper = ({
     return (
         <>
             <Form
+                formClassNames={formClassNames}
                 inputs={[
                     {value: birthDate, placeholder: "DD/MM/YYYY", name: "birthDate", onChange: onBirtDateChange, isError: isError},
                     {value: totalYears, name: "totalYears", isError: isError}

@@ -1,5 +1,12 @@
+@import "src/components/style/StyleVariables";
 .one-year-container {
   display: flex;
   flex-wrap: wrap;
-  //border-bottom: 1px solid #008000;
+}
+
+@media (min-width: $screen--md) {
+  .one-year-container {
+    display: grid;
+    grid-template-columns: repeat(53, minmax(10px, 1fr));
+  }
 }

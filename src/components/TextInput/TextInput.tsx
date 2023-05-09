@@ -3,14 +3,14 @@ import classNames from "classnames";
 import "components/TextInput/TextInput.scss";
 
 interface Props {
-    defaultValue?: string | number;
+    defaultValue?: string | number,
     onChange?: (value: string | number, id?: string) => void,
-    id?: string;
-    type?: "email" | "password" | "text" | "search";
-    label?: string;
-    placeholder?: string;
-    error?: boolean;
-    name?: string;
+    id?: string,
+    type?: "email" | "password" | "text" | "search",
+    label?: string,
+    placeholder?: string,
+    error?: boolean,
+    name?: string
 }
 
 export const TextInput = ({
