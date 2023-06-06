@@ -43,9 +43,8 @@ export const SendingFormWrapper = ({type = "login"}: Props) => {
                     })
             } else {
                 await auth.createUserWithEmailAndPassword(dataItem.login, dataItem.password)
-                    .then((response) => {
-                        localStorage.setItem("user", JSON.stringify(response.user));
-                        history.push("/my_account");
+                    .then(() => {
+                        history.push("/login");
                         handleReset(event);
                     }).catch((error) => {
                         setError(error.message)
