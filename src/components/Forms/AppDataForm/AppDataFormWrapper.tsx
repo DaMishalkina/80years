@@ -1,4 +1,4 @@
-import React, {useState, useRef} from "react";
+import React, {useState, useRef, useEffect} from "react";
 import "components/Forms/AppDataForm/AppDataFormWrapper.scss";
 import {Form} from "components/Forms/Form";
 
@@ -59,6 +59,10 @@ export const  AppDataFormWrapper = ({
     const [birthDate, setBirthDate] = useState(defaultBirthDate);
     const [totalYears, setTotalYears] = useState(defaultTotalYears.toString());
     const [isError, setIsError] = useState(false);
+    useEffect(() => {
+        setBirthDate(defaultBirthDate);
+        setTotalYears(defaultTotalYears.toString());
+    }, [defaultBirthDate, defaultTotalYears]);
 
     const formRef = useRef();
     const onBirtDateChange = () => {

@@ -36,14 +36,16 @@ export const SendingFormWrapper = ({type = "login"}: Props) => {
                 await auth.signInWithEmailAndPassword(dataItem.login, dataItem.password)
                     .then((response) => {
                         localStorage.setItem("user", JSON.stringify(response.user))
-                        handleReset(event)
-                        history.push("/my_account")
+                        handleReset(event);
+                        history.push("/my_account");
                     }).catch((error) => {
                         setError(error.message)
                     })
             } else {
                 await auth.createUserWithEmailAndPassword(dataItem.login, dataItem.password)
-                    .then(() => {
+                    .then((response) => {
+                        localStorage.setItem("user", JSON.stringify(response.user));
+                        history.push("/my_account");
                         handleReset(event);
                     }).catch((error) => {
                         setError(error.message)
@@ -54,7 +56,7 @@ export const SendingFormWrapper = ({type = "login"}: Props) => {
     const setInputs = () => {
         return Object.entries(formData).map(data => {
             const [key, value] = data;
-            return {value: value, placeholder: key, id: key, isError: error.length > 0}
+            return {value: value, placeholder: key, id: key, isError: error.length > 0, type: key === "password" ? "password" as const : "email" as const}
         })
     }
 
