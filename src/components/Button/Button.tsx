@@ -10,7 +10,8 @@ interface Props {
     disabled?: boolean,
     size?: "small" | "large" | "responsive",
     variant?: "default" | "primary" | "secondary" | "third",
-    icon?: ReactElement
+    icon?: ReactElement,
+    buttonClassName?: string
 }
 
 const isLarge = (size = "large") => {
@@ -63,10 +64,11 @@ export const Button = ({
                            size = "small",
                            disabled = false,
                            icon,
-                           onClick }: Props) => {
+                           onClick,
+                           buttonClassName = "" }: Props) => {
  return (
      <button
-         className={classNames("button", setButtonClasses(variant, size, disabled))}
+         className={classNames("button", buttonClassName, setButtonClasses(variant, size, disabled))}
          type={type}
          disabled={disabled}
          onClick={onClick}

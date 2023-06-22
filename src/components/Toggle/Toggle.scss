@@ -3,11 +3,6 @@
   color: var(--label-color, $main-color);
 }
 
-//.toggle__input:checked ~ .toggle__label,
-//.toggle__input:checked ~ .toggle__container .toggle__icon {
-//  --label-color: #{$grey-color};
-//}
-
 .toggle {
   display: flex;
   flex-direction: column;
@@ -84,5 +79,11 @@
 
 .toggle__input:checked:active ~ .toggle__container .toggle__slider::after {
   transform: translateX(calc(var(--button-width) - var(--toggle-wider) - var(--button-toggle-offset)));
+}
+
+@media (prefers-color-scheme: dark) {
+  body.dark{
+    --label-color: #{$main-bg-color};
+  }
 }
 

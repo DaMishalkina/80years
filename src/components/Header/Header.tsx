@@ -3,6 +3,7 @@ import classNames from "classnames";
 import { useHistory } from "react-router-dom";
 import {NavLink} from "react-router-dom";
 import { Toggle } from "components/Toggle/Toggle";
+import {Button} from "components/Button/Button";
 import {useColorScheme} from "services/hooks/useColorScheme";
 import useMediaQuery from "services/hooks/useMediaQuery";
 import {auth} from "firebaseSetup";
@@ -59,7 +60,8 @@ export const Header = ({}: Props) => {
             </div>
             <div className={classNames("navigation header__navigation", isToggled && isMobile && "navigation--opened")}>
                 <div className="navigation__container">
-                    {history?.location?.pathname !== "/weeks_tracker" &&
+                    {history?.location?.pathname !== "/weeks_tracker"
+                        && history?.location?.pathname !== "/my_account" &&
                         <NavLink
                             className="link header__link"
                             to={"/weeks_tracker"}
@@ -83,7 +85,12 @@ export const Header = ({}: Props) => {
                             </NavLink>
                         </div>
                         :
-                        <button onClick={logout}>Log out</button>
+                        <div className="logout-button header__button">
+                            <Button
+                                label="Log out"
+                                onClick={logout} variant="primary"
+                            />
+                        </div>
                     }
                 </div>
             </div>

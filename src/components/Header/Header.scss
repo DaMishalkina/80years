@@ -12,6 +12,7 @@
   margin: 0 auto;
   background: var(--header-bg, $main-bg-color);
   z-index: 100;
+  gap: 32px;
 }
 
 .logo__link {
@@ -20,12 +21,12 @@
   font-weight: 700;
   font-size: 22px;
   line-height: 31px;
-  color: var(--logo-link-color, $main-color);
+  color: var(--header-link-color, $main-color);
   &:hover {
-    --logo-link-color: #{$main-color--hover};
+    --header-link-color: #{$main-color--hover};
   }
   &:focus {
-    --logo-link-color: #{$main-color--focus};
+    --header-link-color: #{$main-color--focus};
   }
 }
 
@@ -33,6 +34,7 @@
   display: flex;
   align-items: center;
   gap: 32px;
+  margin-left: auto;
 }
 
 .signup-link {
@@ -41,17 +43,23 @@
   font-weight: 500;
   font-size: 16px;
   line-height: 22px;
-  background: $secondary-color;
+  background: var(--signup-link-color, $secondary-color);
   border-radius: 100px;
-  border: 2px solid $secondary-color;
+  border: 2px solid var(--signup-link-color, $secondary-color);
   &:hover {
-    background: $secondary-color--hover;
-    border: 2px solid $secondary-color--hover;
+    --signup-link-color: #{$secondary-color--hover};
   }
   &:focus {
-    background: $secondary-color--focus;
-    border: 2px solid $secondary-color--focus;
+    --signup-link-color: #{$secondary-color--focus};
   }
+}
+
+.hamburger-button__span {
+  background: var(--header-link-color, $main-color);
+  border-radius:10px;
+  height:2px;
+  margin: 2px 0;
+  transition: .4s  cubic-bezier(0.68, -0.6, 0.32, 1.6);
 }
 
 .hamburger-button {
@@ -61,19 +69,11 @@
   cursor:pointer;
   justify-content: center;
   &:hover .hamburger-button__span {
-    background: $main-color--hover;
+    --header-link-color: #{$main-color--hover};
   }
   &:focus .hamburger-button__span {
-    background: $main-color--focus;
+    --header-link-color: #{$main-color--focus};
   }
-}
-
-.hamburger-button__span {
-  background: $main-color;
-  border-radius:10px;
-  height:2px;
-  margin: 2px 0;
-  transition: .4s  cubic-bezier(0.68, -0.6, 0.32, 1.6);
 }
 
 .hamburger-button__span:nth-of-type(1){
@@ -117,7 +117,7 @@
   top: 63px;
   left: 0;
   display: flex;
-  background: $main-bg-color;
+  background: var(--header-bg, $main-bg-color);
   height: calc(100vh - 63px);
   width: 100vw;
   box-sizing: border-box;
@@ -138,6 +138,11 @@
   align-items: center;
   gap: 16px;
   margin-top: auto;
+}
+
+.logout-button {
+  margin-top: auto;
+  align-self: center;
 }
 
 @media (min-width: $screen--md) {
@@ -170,4 +175,41 @@
     font-size: 22px;
   }
 
+}
+
+
+@media (prefers-color-scheme: dark) {
+  body.dark{
+    --header-bg: #{$bg-color--dark};
+    .logo__link {
+      --header-link-color: #{$main-bg-color};
+      &:hover{
+        --header-link-color: #{$main-bg-color--hover};
+      }
+      &:focus{
+        --header-link-color: #{$main-bg-color--focus};
+      }
+    }
+    .signup-link {
+      --signup-link-color: #{$third-color};
+      &:hover{
+        --signup-link-color: #{$third-color--hover};
+      }
+      &:focus{
+        --signup-link-color: #{$third-color--focus};
+      }
+    }
+    .hamburger-button__span {
+      --header-link-color: #{$main-bg-color};
+    }
+    .hamburger-button {
+      &:hover .hamburger-button__span {
+        --header-link-color: #{$main-bg-color--hover}
+      }
+      &:focus .hamburger-button__span {
+        --header-link-color: #{$main-bg-color--focus};
+      }
+    }
+
+  }
 }

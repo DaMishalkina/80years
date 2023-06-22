@@ -6,7 +6,7 @@ import "pages/Login/Login.scss";
 export const Login: FunctionComponent = () => {
     return (
         <div className="login-container">
-            <h1>Login Form</h1>
+            <h1 className="login-container__title">Login Form</h1>
             <SendingFormWrapper />
         </div>
     )

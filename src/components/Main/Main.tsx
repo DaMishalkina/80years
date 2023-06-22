@@ -2,6 +2,7 @@ import React, {useEffect, useState} from "react";
 import classNames from "classnames";
 import {AppDataFormWrapper} from "components/Forms/AppDataForm/AppDataFormWrapper";
 import {WeeksSection} from "components/WeeksSection/WeeksSectionComponent/WeeksSection";
+import "components/Main/Main.scss";
 
 const AVERAGE_LIFE_YEARS = 80;
 
@@ -22,11 +23,12 @@ export const Main = ({
                          : Props) => {
     const [birthDate, setBirthDate] = useState(defaultBirthDate);
     const [totalYears, setTotalYears] = useState(defaultTotalYears);
-    const [isFormOpened, setFormOpened] = useState(isNewUser);
+    const [isFormOpened, setFormOpened] = useState(!isNewUser);
     useEffect(() => {
         setBirthDate(defaultBirthDate);
         setTotalYears(defaultTotalYears);
-    }, [defaultBirthDate, defaultTotalYears])
+        setFormOpened(!isNewUser);
+    }, [defaultBirthDate, defaultTotalYears, isNewUser])
     const toggleForm = () => {
         setFormOpened((prev) => !prev)
     }

@@ -30,3 +30,14 @@
 .custom-checkbox__input:checked + .custom-checkbox__checkmark {
   --checkmark-bg: #{$secondary-color};
 }
+
+@media (prefers-color-scheme: dark) {
+  body.dark{
+    .custom-checkbox__checkmark {
+      --checkmark-bg: #{$main-bg-color};
+    }
+    .custom-checkbox__input:checked + .custom-checkbox__checkmark {
+      --checkmark-bg: #{$primary-color};
+    }
+  }
+}

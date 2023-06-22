@@ -14,16 +14,16 @@ a {
 }
 
 .link {
-  color: $main-color;
+  color: var(--link-color, $main-color);
   font-family: DM Sans, sans-serif;
   font-weight: 400;
   font-size: 16px;
   line-height: 26px;
   &:hover {
-    color: $main-color--hover;
+    --link-color: #{$main-color--hover};
   }
   &:focus {
-    color: $main-color--focus;
+    --link-color: #{$main-color--focus};
   }
 }
 
@@ -32,6 +32,15 @@ a {
 @media (prefers-color-scheme: dark) {
   body.dark {
     --bg-color: #{$bg-color--dark};
+    .link {
+      --link-color: #{$main-bg-color};
+      &:hover{
+        --link-color: #{$main-bg-color--hover};
+      }
+      &:focus{
+        --link-color: #{$main-bg-color--focus};
+      }
+    }
   }
 }
 
