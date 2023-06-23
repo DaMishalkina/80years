@@ -2,6 +2,13 @@
 body {
   font-family: DM Sans, sans-serif;
   background: var(--bg-color, $main-bg-color);
+  text-rendering: optimizeSpeed;
+}
+
+img,
+picture {
+  max-width: 100%;
+  display: block;
 }
 
 .page__section {

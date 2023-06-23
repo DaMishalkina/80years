@@ -16,7 +16,7 @@
   --toggle-shadow-offset: 10px;
   --toggle-wider: 3em;
   --toggle-bg: #{$text-color--grey};
-  --toggle-bg--checked: #{$main-color};
+  --toggle-bg--checked: #{$secondary-color};
 }
 
 .toggle__container {

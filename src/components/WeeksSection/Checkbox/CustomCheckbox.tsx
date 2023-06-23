@@ -27,7 +27,7 @@ const setCheckboxClassnames = (color = "default") => {
 
 export const CustomCheckbox = ({
                                    isDefaultActive = false,
-                                   disabled = false,
+                                   //disabled = false,
                                    color = "default",
                                    id,
                                    onChange
@@ -49,7 +49,7 @@ export const CustomCheckbox = ({
                 type="checkbox"
                 checked={isActive}
                 onChange={onCheck}
-                disabled={disabled}/>
+                disabled={true}/>
             <span className="custom-checkbox__checkmark"></span>
         </label>
     )
