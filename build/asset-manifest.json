@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/80years/static/css/main.1d7f778f.css",
+    "main.js": "/80years/static/js/main.31fba46f.js",
+    "static/media/alarmAnimatedImage.gif": "/80years/static/media/alarmAnimatedImage.8441694d621e8ad71a56.gif",
+    "static/media/skeletonAnimatedImage.gif": "/80years/static/media/skeletonAnimatedImage.56e1fd18a46495f8b180.gif",
+    "static/media/noImage.jpeg": "/80years/static/media/noImage.21ec918e342865674fda.jpeg",
+    "index.html": "/80years/index.html",
+    "main.1d7f778f.css.map": "/80years/static/css/main.1d7f778f.css.map",
+    "main.31fba46f.js.map": "/80years/static/js/main.31fba46f.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.1d7f778f.css",
+    "static/js/main.31fba46f.js"
+  ]
+}
