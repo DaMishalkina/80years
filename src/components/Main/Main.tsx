@@ -15,7 +15,7 @@ interface Props {
 }
 
 export const Main = ({
-                         // isAuth = false,
+                         isAuth = false,
                          isNewUser = true,
                          handleSubmit,
                          defaultTotalYears = AVERAGE_LIFE_YEARS,
@@ -23,11 +23,11 @@ export const Main = ({
                          : Props) => {
     const [birthDate, setBirthDate] = useState(defaultBirthDate);
     const [totalYears, setTotalYears] = useState(defaultTotalYears);
-    const [isFormOpened, setFormOpened] = useState(!isNewUser);
+    const [isFormOpened, setFormOpened] = useState(isAuth ? !isNewUser : true);
     useEffect(() => {
         setBirthDate(defaultBirthDate);
         setTotalYears(defaultTotalYears);
-        setFormOpened(!isNewUser);
+        setFormOpened(isAuth ? !isNewUser : true);
     }, [defaultBirthDate, defaultTotalYears, isNewUser])
     const toggleForm = () => {
         setFormOpened((prev) => !prev)
