@@ -1,0 +1,34 @@
+@import "src/components/style/StyleVariables";
+.success-message {
+  color: var(--message-color, #252525);
+  padding: 16px;
+  font-size: $size-step-1;
+}
+
+.success-message__link {
+  color: var(--message-link-color, $main-color);
+  text-decoration: underline var(--message-link-color, $main-color);
+  &:hover {
+    --message-link-color: #{$main-color--hover};
+  }
+  &:focus {
+    --message-link-color: #{$main-color--focus};
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  body.dark {
+    --message-color: #efefef;
+    .success-message__link{
+      color: var(--message-link-color, $primary-color);
+      text-decoration: underline var(--message-link-color, $primary-color);
+      &:hover {
+        --message-link-color: #{$primary-color--hover};
+      }
+      &:focus {
+        --message-link-color: #{$primary-color--focus};
+      }
+    }
+  }
+}
+
