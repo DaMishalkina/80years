@@ -1,5 +1,5 @@
 import React, {FunctionComponent, ReactElement} from "react";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { HashRouter as Router, Switch, Route } from "react-router-dom";
 import { ROUTES } from "components/Naviagation/constants/constants";
 import {RouteItem} from "components/Naviagation/types/types";
 import './App.scss';

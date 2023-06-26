@@ -30,11 +30,42 @@
   gap: 12px;
 }
 
+.actions__links {
+  display: flex;
+  flex-direction: column;
+}
+
+.action__link {
+  color: var(--form-link-color, $main-color);
+  text-decoration: underline var(--form-link-color, $main-color);
+  &:hover {
+  --form-link-color: #{$main-color--hover};
+  }
+  &:focus {
+    --form-link-color: #{$main-color--focus};
+  }
+}
+
 @media (min-width: $screen--md) {
   .form-container {
     gap: 30px;
   }
   .actions {
     gap: 30px;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  body.dark {
+    .action__link {
+      color: var(--form-link-color, $primary-color);
+      text-decoration: underline var(--form-link-color, $primary-color);
+      &:hover {
+        --form-link-color: #{$primary-color--hover};
+      }
+      &:focus {
+        --form-link-color: #{$primary-color--focus};
+      }
+    }
   }
 }
