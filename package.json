@@ -2,6 +2,7 @@
   "name": "80_years",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://damishalkina.github.io/80years",
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^12.1.4",
@@ -30,7 +31,10 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "jest",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "serve": "serve -s build",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build -b main"
   },
   "eslintConfig": {
     "extends": [
