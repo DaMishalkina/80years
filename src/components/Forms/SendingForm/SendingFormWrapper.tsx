@@ -1,8 +1,9 @@
 import React, {FormEvent, useState} from "react";
 import { auth } from "firebaseSetup";
 import {LoginItem} from "components/Forms/SendingForm/types";
-import { useHistory } from "react-router-dom";
+import {NavLink, useHistory} from "react-router-dom";
 import {Form} from "components/Forms/Form";
+import "components/Forms/SendingForm/SendingForm.scss";
 
 interface Props {
     type?: "login" | "signup"
@@ -12,6 +13,7 @@ export const SendingFormWrapper = ({type = "login"}: Props) => {
     const history = useHistory();
     const [formData, setFormData] = useState({login: "", password: ""});
     const [error, setError] = useState("");
+    const [isSignupSuccessful, setIsSignupSuccessful] = useState(false);
     const handleInput = (value: string, id: string) => {
         setError("");
         setFormData({...formData, [id]: value});
@@ -44,7 +46,7 @@ export const SendingFormWrapper = ({type = "login"}: Props) => {
             } else {
                 await auth.createUserWithEmailAndPassword(dataItem.login, dataItem.password)
                     .then(() => {
-                        history.push("/login");
+                        setIsSignupSuccessful(true);
                         handleReset(event);
                     }).catch((error) => {
                         setError(error.message)
@@ -60,13 +62,25 @@ export const SendingFormWrapper = ({type = "login"}: Props) => {
     }
 
     return (
-        <Form
-            inputs={setInputs()}
-            onSubmit={handleSubmit}
-            onReset={handleReset}
-            onChange={handleInput}
-            error={error}
-            links={type === "login" ? [{path: "/signup", text: "If you have not an account yet, please sign up"}] : []}
-        />
+        <>
+            {type === "signup" && isSignupSuccessful ?
+                <div className="success-message">
+                    Congratulations! You are successfully signed up 👏<br/>
+                    You can now  <NavLink className="success-message__link" to={"/login"}>Login</NavLink>
+                </div>
+             :
+                <Form
+                    inputs={setInputs()}
+                    onSubmit={handleSubmit}
+                    onReset={handleReset}
+                    onChange={handleInput}
+                    error={error}
+                    links={type === "login" ? [{path: "/signup", text: "If you have not an account yet, please sign up"}] : []}
+                />
+
+            }
+
+
+        </>
     )
 }
