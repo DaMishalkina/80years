@@ -60,6 +60,7 @@ const setActionComponentClasses = (
 }
 
 const isLink = (link) => {
+    console.log(link)
     return link.length > 0;
 }
 
@@ -75,7 +76,7 @@ export const ActionComponent = ({
                            link = "" }: Props) => {
  return (
      <>
-         {isLink(!link) ? (
+         {!isLink(link) ? (
              <button
                  className={classNames("action", buttonClassName, setActionComponentClasses(variant, size, disabled))}
                  type={type}

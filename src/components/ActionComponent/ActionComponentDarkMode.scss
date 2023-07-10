@@ -11,14 +11,14 @@
         --action-border: #{$main-bg-color};
       }
     }
-    .button--primary {
-      --button-border: #{$primary-color};
+    .action--primary {
+      --action-border: #{$primary-color};
       &:hover {
-        --button-bg: #{$primary-color--hover};
-        --button-border: #{$primary-color--hover};
+        --action-bg: #{$primary-color--hover};
+        --action-border: #{$primary-color--hover};
       }
       &:focus {
-        --button-color: #{$main-bg-color};
+        --action-color: #{$main-bg-color};
         --action-bg: #{$primary-color--focus};
         --action-border: #{$primary-color--focus};
       }
@@ -26,6 +26,11 @@
         --action-color: #{$main-bg-color};
         --action-bg: #{$primary-color--disabled};
         --action-border: #{$primary-color--disabled};
+      }
+    }
+    .action--third, .action--secondary {
+      &:focus {
+        --action-color: #{$main-bg-color};
       }
     }
   }
