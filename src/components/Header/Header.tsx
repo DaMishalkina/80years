@@ -60,19 +60,10 @@ export const Header = ({}: Props) => {
             </div>
             <div className={classNames("navigation header__navigation", isToggled && isMobile && "navigation--opened")}>
                 <div className="navigation__container">
-                    {history?.location?.pathname !== "/weeks_tracker"
-                        && history?.location?.pathname !== "/my_account" &&
-                        <NavLink
-                            className="link header__link"
-                            to={"/weeks_tracker"}
-                        >
-                            Try weeks tracker
-                        </NavLink>
-                    }
                     {!isAuth ?
                         <div className="navigation__item">
                             <NavLink
-                                className="header__link link "
+                                className="login-link header__link link"
                                 to={"/login"}
                             >
                                 Log in
@@ -85,13 +76,24 @@ export const Header = ({}: Props) => {
                             </NavLink>
                         </div>
                         :
-                        <div className="logout-button header__button">
+                        <div className="logout-button navigation__item">
                             <ActionComponent
                                 label="Log out"
                                 onClick={logout} variant="primary"
                             />
                         </div>
                     }
+                    <div className="navigation__menu navigation__item">
+                        {history?.location?.pathname !== "/weeks_tracker"
+                            && history?.location?.pathname !== "/my_account" &&
+                            <NavLink
+                                className="header__link link"
+                                to={"/weeks_tracker"}
+                            >
+                                Try weeks tracker
+                            </NavLink>
+                        }
+                    </div>
                 </div>
             </div>
         </header>

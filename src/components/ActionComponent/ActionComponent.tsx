@@ -60,7 +60,6 @@ const setActionComponentClasses = (
 }
 
 const isLink = (link) => {
-    console.log(link)
     return link.length > 0;
 }
 
