@@ -1,5 +1,6 @@
 import React, {FunctionComponent} from "react";
 import {Layout} from "components/Layout/Layout";
+import {ActionComponent} from "components/ActionComponent/ActionComponent";
 import "pages/Home/Home.scss";
 import alarmImage from "assets/alarmAnimatedImage.gif";
 import noImage from "assets/noImage.jpeg";
@@ -46,6 +47,12 @@ export const Home:FunctionComponent = ({}) => {
                         **You can also check your mothers&rsquo;s &ldquo;life progress&rdquo;
                     </p>
                 </div>
+                <ActionComponent
+                    buttonClassName="home-container__button"
+                    label="Try it!"
+                    variant="third"
+                    link="/weeks_tracker"
+                />
             </Layout>
         </>
     )

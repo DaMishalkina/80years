@@ -85,7 +85,7 @@ export const WeeksSection = ({birthDate, totalYears}: Props) => {
             {birthDate.length > 0 &&
                 <>
                     {isMobile && <div className="years__head"></div>}
-                    <div className="years-container years__container">
+                    <div className="а years__container">
                         {allWeeks.map((chunk, index) =>
                             isMobile ?
                                 <div key={index} className="progress-bar years-container__progress-bar">

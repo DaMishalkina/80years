@@ -2,7 +2,7 @@ import React, {FormEvent, LegacyRef} from "react";
 import classNames from "classnames";
 import "components/Forms/Form.scss";
 import {TextInput} from "components/TextInput/TextInput";
-import {Button} from "components/Button/Button";
+import {ActionComponent} from "components/ActionComponent/ActionComponent";
 import {NavLink} from "react-router-dom";
 import {FormInputs, FormButtons, FormLinks} from "components/Forms/types";
 
@@ -63,7 +63,7 @@ export const Form = ({
                     {typeof formButtons !== "undefined" &&
                     <div className="actions__buttons">
                         {formButtons?.map((button, index) =>
-                            <Button
+                            <ActionComponent
                                 key={index}
                                 label={button?.label}
                                 type={button?.type}

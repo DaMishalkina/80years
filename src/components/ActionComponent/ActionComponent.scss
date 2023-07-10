@@ -1,6 +1,6 @@
 @import "src/components/style/StyleVariables";
 
-.button {
+.action {
   display: flex;
   gap: 6px;
   align-items: center;
@@ -11,51 +11,51 @@
   line-height: 26px;
   text-align: center;
   border-radius: 100px;
-  border: 2px solid var(--button-border, $grey-color);
-  color: var(--button-color, $main-color);
-  background: var(--button-bg, transparent);
+  border: 2px solid var(--action-border, $grey-color);
+  color: var(--action-color, $main-color);
+  background: var(--action-bg, transparent);
   &:hover {
-    background: var(--button-border);
+    background: var(--action-border);
   }
   &:focus {
-    --button-color: #{$main-bg-color};
-    --button-bg: #{$main-color--focus};
-    --button-border: #{$main-color--focus};
+    --action-color: #{$main-bg-color};
+    --action-bg: #{$main-color--focus};
+    --action-border: #{$main-color--focus};
   }
-  &.button--disabled {
-    --button-bg: #{$grey-color--disabled};
-    --button-color: #{$grey-color};
+  &.action--disabled {
+    --action-bg: #{$grey-color--disabled};
+    --action-color: #{$grey-color};
   }
 }
 
 
-.button--large {
+.action--large {
   padding: 17px 33px;
 }
 
-.button--primary, .button--secondary, .button--third {
-  --button-color: #{$main-bg-color};
+.action--primary, .action--secondary, .action--third {
+  --action-color: #{$main-bg-color};
 }
 
-.button--primary {
-  --button-bg: #{$primary-color};
-  --button-border: #{$primary-color};
+.action--primary {
+  --action-bg: #{$primary-color};
+  --action-border: #{$primary-color};
   &:hover {
-    --button-bg: #{$primary-color--hover};
-    --button-border: #{$primary-color--hover};
+    --action-bg: #{$primary-color--hover};
+    --action-border: #{$primary-color--hover};
   }
   &:focus {
-    --button-bg: #{$primary-color--focus};
-    --button-border: #{$primary-color--focus};
+    --action-bg: #{$primary-color--focus};
+    --action-border: #{$primary-color--focus};
   }
-  &.button--disabled {
-    --button-color: #{$main-bg-color};
-    --button-bg: #{$primary-color--disabled};
-    --button-border: #{$primary-color--disabled};
+  &.action--disabled {
+    --action-color: #{$main-bg-color};
+    --action-bg: #{$primary-color--disabled};
+    --action-border: #{$primary-color--disabled};
   }
 }
 
-.button--secondary {
+.action--secondary {
   background: $secondary-color;
   border: 2px solid $secondary-color;
   &:hover {
@@ -67,14 +67,14 @@
     background: $secondary-color--focus;
     border: 2px solid $secondary-color--focus;
   }
-  &.button--disabled {
+  &.action--disabled {
     color: $main-bg-color;
     background: $secondary-color--disabled;
     border: 2px solid $secondary-color--disabled;
   }
 }
 
-.button--third {
+.action--third {
   background: $third-color;
   border: 2px solid $third-color;
   &:hover {
@@ -85,7 +85,7 @@
     background: $third-color--focus;
     border: 2px solid $third-color--focus;
   }
-  &.button--disabled {
+  &.action--disabled {
     color: $main-bg-color;
     background: $third-color--disabled;
     border: 2px solid $third-color--disabled;
@@ -93,7 +93,7 @@
 }
 
 @media (min-width: $screen--md) {
-  .button--responsive {
+  .action--responsive {
     padding: 12px 33px;
   }
 }

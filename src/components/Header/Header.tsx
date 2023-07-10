@@ -3,7 +3,7 @@ import classNames from "classnames";
 import { useHistory } from "react-router-dom";
 import {NavLink} from "react-router-dom";
 import { Toggle } from "components/Toggle/Toggle";
-import {Button} from "components/Button/Button";
+import {ActionComponent} from "components/ActionComponent/ActionComponent";
 import {useColorScheme} from "services/hooks/useColorScheme";
 import useMediaQuery from "services/hooks/useMediaQuery";
 import {auth} from "firebaseSetup";
@@ -66,7 +66,7 @@ export const Header = ({}: Props) => {
                             className="link header__link"
                             to={"/weeks_tracker"}
                         >
-                            Weeks Tracker
+                            Try weeks tracker
                         </NavLink>
                     }
                     {!isAuth ?
@@ -86,7 +86,7 @@ export const Header = ({}: Props) => {
                         </div>
                         :
                         <div className="logout-button header__button">
-                            <Button
+                            <ActionComponent
                                 label="Log out"
                                 onClick={logout} variant="primary"
                             />

@@ -1,0 +1,32 @@
+@import "src/components/style/StyleVariables";
+
+@media (prefers-color-scheme: dark) {
+  body.dark {
+    .action {
+      --action-color: #{$main-bg-color};
+      --action-border: #{$button-border--dark};
+      &:focus {
+        --action-color: #{$main-color};
+        --action-bg: #{$main-bg-color};
+        --action-border: #{$main-bg-color};
+      }
+    }
+    .button--primary {
+      --button-border: #{$primary-color};
+      &:hover {
+        --button-bg: #{$primary-color--hover};
+        --button-border: #{$primary-color--hover};
+      }
+      &:focus {
+        --button-color: #{$main-bg-color};
+        --action-bg: #{$primary-color--focus};
+        --action-border: #{$primary-color--focus};
+      }
+      &.action--disabled {
+        --action-color: #{$main-bg-color};
+        --action-bg: #{$primary-color--disabled};
+        --action-border: #{$primary-color--disabled};
+      }
+    }
+  }
+}
