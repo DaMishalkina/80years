@@ -65,8 +65,10 @@ html:focus-within {
   scroll-behavior: smooth;
 }
 
-.home-container image {
+.home-container img {
   margin: 0 auto;
+  height: auto;
+  padding: 16px;
 }
 
 .home-container__additions {
@@ -80,6 +82,13 @@ html:focus-within {
   left: 100%;
   margin: 0 32px 0 0;
   max-width: max-content;
+}
+
+@media (min-width: $screen--lg) {
+  .home-container__button {
+    margin: 0 64px 0 0;
+    bottom: 32px;
+  }
 }
 
 @media (prefers-color-scheme: dark) {

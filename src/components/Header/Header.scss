@@ -215,6 +215,10 @@
     padding: 0;
   }
 
+  .navigation__menu *::after {
+    display: none;
+  }
+
 }
 
 
